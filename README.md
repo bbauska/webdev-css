@@ -41,7 +41,7 @@ This course is created for beginner and advanced CSS developers alike. You can g
   - Text and typography - In this module, learn how to style text on the web.
   - Conclusion and next steps - Further resources to help you take your next steps.
  
-  1. Box Model
+# 1. Box Model
 Say you have this bit of HTML:
 ```[html]
 <p>I am a paragraph of text that has a few words in it.</p>
