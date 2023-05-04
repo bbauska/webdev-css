@@ -40,3 +40,23 @@ This course is created for beginner and advanced CSS developers alike. You can g
   - Backgrounds - In this module learn the ways you can style backgrounds of boxes using CSS.
   - Text and typography - In this module, learn how to style text on the web.
   - Conclusion and next steps - Further resources to help you take your next steps.
+ 
+  1. Box Model
+Say you have this bit of HTML:
+```[html]
+<p>I am a paragraph of text that has a few words in it.</p>
+```
+Then you write this CSS for it:
+```[css]
+p {
+  width: 100px;
+  height: 50px;
+  padding: 20px;
+  border: 1px solid;
+}
+```
+
+The content would break out of your element and it would be 142px wide, rather than 100px. Why is that? The box model is a core foundation of CSS and understanding how it works, how it is affected by other aspects of CSS and importantly, how you can control it will help you to write more predictable CSS.
+
+
+
