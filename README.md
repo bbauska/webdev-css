@@ -47,6 +47,7 @@ Say you have this bit of HTML:
 <p>I am a paragraph of text that has a few words in it.</p>
 ```
 Then you write this CSS for it:
+
 ```[css]
 p {
   width: 100px;
