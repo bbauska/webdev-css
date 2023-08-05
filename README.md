@@ -70,7 +70,7 @@ You can control this by using extrinsic sizing, or, you can continue to let the 
 
 Let's quickly look at the difference, using a demo to help us.
 
-```
+```html
 <main>
   <div class="wrapper">
     <article class="flow">
@@ -95,7 +95,7 @@ Let's quickly look at the difference, using a demo to help us.
 </main>
 ```
 
-```
+```css
 .awesome {
   text-transform: uppercase;
   font-size: 5rem;
