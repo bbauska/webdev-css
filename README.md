@@ -130,7 +130,7 @@ intrinsicSwitch.addEventListener("change", () => {
     intrinsicSwitch.checked ? "intrinsic" : "extrinsic"
   );
 });
-'''
+```
 
 ![image](https://github.com/bbauska/webdev-css/assets/41387907/8349146d-bf04-40bd-b2c3-8f79bf531dc3)
 
