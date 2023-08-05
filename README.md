@@ -141,3 +141,95 @@ Notice that when the box is using extrinsic sizing, there's a limit of how much
 content you can add before it overflows out of the box's bounds. This makes the 
 word, "awesome", overflow.
 
+The demo has the words, "CSS is awesome" in a box with fixed dimensions and a thick border. The box has a width, so 
+is extrinsically sized. It controls the sizing of its child content. The problem with this though, is that the word 
+"awesome" is too large for the box, so it overflows outside of the parent box's border box (more on this later in 
+the lesson). One way to prevent this overflow is to allow the box to be intrinsically sized by either unsetting 
+the width, or in this case, setting the width to be min-content. The min-content keyword tells the box to only 
+be as wide as the intrinsic minimum width of its content (the word "awesome"). This allows the box to fit around 
+"CSS is awesome", perfectly.
+
+Let's look at something more complex to see the impact of different sizing on real content:
+
+```html
+<main>
+  <div class="wrapper">
+    <article class="flow">
+      <h1>Extrinsic sizing vs intrinsic sizing</h1>
+      <figure class="callout">
+        <p>Toggle intrinsic sizing on and off to see how you can gain more control with <strong>extrinsic sizing</strong> and let the content have more control with <strong>intrinsic sizing</strong>. </p>
+        <p>To see the effect that intrinsic and extrinsic sizing has, go ahead and add a few sentences of content to the card to see the vast differences in display.</p>
+      </figure>
+      <label class="toggle" for="intrinsic-switch">
+        <span class="toggle__label">Turn on intrinsic sizing</span>
+        <input type="checkbox" role="switch" class="toggle__element" id="intrinsic-switch" />
+        <div class="toggle__decor" aria-hidden="true">
+          <div class="toggle__thumb"></div>
+        </div>
+      </label>
+      <div class="box-layout">
+        <div class="dimension-label" aria-live="polite" aria-label="Current box width">
+          <span data-element="width-label"></span>
+        </div>
+        <div></div>
+        <figure class="box-demo box" data-element="parent-box">
+          <img src="http://source.unsplash.com/CiFaYIvZyyA/800" alt="A purple Petunia flower in close focus" />
+          <figcaption contenteditable>
+            You can edit this text to see how it changes the layout of our box,
+            depending on intrinsic and extrinsic sizing.
+          </figcaption>
+        </figure>
+        <div class="dimension-label" aria-live="polite" aria-label="Current box height" data-orientation="vertical">
+          <span data-element="height-label"></span>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+```
+
+```css
+.box-demo {
+  width: 400px;
+  height: 400px;
+}
+
+.box-demo[data-sizing="intrinsic"] {
+  width: max-content;
+  height: max-content;
+}
+
+.box-layout {
+  display: grid;
+  width: max-content;
+  gap: 0.5rem;
+  grid-template-columns: 1fr min-content;
+}
+```
+
+```javascript
+const parentBox = document.querySelector('[data-element="parent-box"]');
+const heightLabel = document.querySelector('[data-element="height-label"]');
+const widthLabel = document.querySelector('[data-element="width-label"]');
+const intrinsicSwitch = document.querySelector("#intrinsic-switch");
+
+// Update the size labels on resize
+const observer = new ResizeObserver((observedItems) => {
+  const { borderBoxSize } = observedItems[0];
+
+  widthLabel.innerText = `${Math.round(borderBoxSize[0].inlineSize)}px`;
+  heightLabel.innerText = `${Math.round(borderBoxSize[0].blockSize)}px`;
+});
+
+observer.observe(parentBox);
+
+// Set sizing attribute based on switch
+intrinsicSwitch.addEventListener("change", () => {
+  parentBox.setAttribute(
+    "data-sizing",
+    intrinsicSwitch.checked ? "intrinsic" : "extrinsic"
+  );
+});
+```
+![image](https://github.com/bbauska/webdev-css/assets/41387907/45136414-76c7-4270-8713-cc660d54307b)
+
