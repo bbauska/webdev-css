@@ -132,7 +132,7 @@ intrinsicSwitch.addEventListener("change", () => {
 });
 ```
 
-![image](https://github.com/bbauska/webdev-css/assets/41387907/8349146d-bf04-40bd-b2c3-8f79bf531dc3)
+![box model output from jsbin](https://github.com/bbauska/webdev-css/assets/41387907/8349146d-bf04-40bd-b2c3-8f79bf531dc3)
 
 
 Notice that when the box is using extrinsic sizing, there's a limit of how much content you can add before it overflows out of the box's bounds. This makes the word, "awesome", overflow.
